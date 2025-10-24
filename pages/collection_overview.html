@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - Masculine Luxury Clothing | Premium Menswear Collections</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <meta name="description" content="Explore our curated collections of premium menswear. From executive essentials to weekend luxury, discover crafted pieces for the modern gentleman.">
+  <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmasculine7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
+  <script type="module" src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+  </head>
+<body class="bg-background font-inter">
+    <!-- Header Navigation -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-400 transition-premium">
+        <div class="bg-primary/90 backdrop-blur-md border-b border-secondary/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="homepage.html" class="text-white font-playfair font-bold text-xl tracking-wider">
+                            MASCULINE
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="collection_overview.html" class="text-accent font-inter font-medium">Collections</a>
+                        <a href="style_guide.html" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Style Guide</a>
+                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Craftsmanship</a>
+                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">About</a>
+                    </nav>
+                    
+                    <!-- Search and Account -->
+                    <div class="flex items-center space-x-4">
+                        <button id="search-toggle" class="text-white hover:text-accent transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                        <a href="account_dashboard.html" class="text-white hover:text-accent transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </a>
+                        <a href="checkout.html" class="text-white hover:text-accent transition-colors duration-300 relative">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                            </svg>
+                            <span class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">2</span>
+                        </a>
+                        
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div id="search-bar" class="bg-primary/95 backdrop-blur-md border-b border-secondary/20 transform -translate-y-full transition-transform duration-400 transition-premium">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="relative">
+                    <input type="text" 
+                           placeholder="Search collections, products, or styles..." 
+                           class="w-full bg-secondary/50 text-white placeholder-white/60 px-4 py-3 pl-12 pr-4 focus:outline-none focus:bg-secondary/70 transition-colors duration-300">
+                    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <section class="pt-24 pb-8 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 text-sm font-inter">
+                <a href="homepage.html" class="text-text-secondary hover:text-primary transition-colors duration-300">Home</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-primary font-medium">Collections</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="py-16 bg-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1620316687071-94d71e95777a" 
+                 alt="Luxury menswear craftsmanship workshop showcasing premium fabric selection and tailoring expertise" 
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://images.unsplash.com/photo-1651981265769-ab0e2311e781'; this.onerror=null;">
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="font-playfair font-bold text-5xl md:text-6xl mb-6 tracking-wide">
+                    Curated Collections
+                </h1>
+                <p class="font-inter text-lg md:text-xl opacity-90 leading-relaxed">
+                    Discover our meticulously crafted collections where heritage meets innovation. Each piece tells a story of uncompromising quality and timeless sophistication.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <aside class="lg:w-80 flex-shrink-0">
+                    <div class="bg-white shadow-card p-6 sticky top-24">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-playfair font-semibold text-xl text-primary">Filters</h3>
+                            <button id="reset-filters" class="text-accent hover:text-accent/80 font-inter text-sm font-medium">
+                                Reset All
+                            </button>
+                        </div>
+                        
+                        <!-- Collection Type Filter -->
+                        <div class="mb-8">
+                            <h4 class="font-inter font-semibold text-primary mb-4">Collection Type</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="seasonal">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Seasonal Collections</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="core">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Core Essentials</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="limited">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Limited Editions</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="bespoke">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Bespoke Services</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Material Filter -->
+                        <div class="mb-8">
+                            <h4 class="font-inter font-semibold text-primary mb-4">Material</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="wool">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Premium Wool</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="cashmere">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Cashmere</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="cotton">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Organic Cotton</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only filter-checkbox" data-filter="leather">
+                                    <div class="w-4 h-4 border-2 border-secondary mr-3 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-accent opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Italian Leather</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Range Filter -->
+                        <div class="mb-8">
+                            <h4 class="font-inter font-semibold text-primary mb-4">Price Range</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="price" class="sr-only price-radio" data-price="all">
+                                    <div class="w-4 h-4 border-2 border-secondary rounded-full mr-3 flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-accent rounded-full opacity-0 transition-opacity duration-200"></div>
+                                    </div>
+                                    <span class="font-inter text-text-primary">All Prices</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="price" class="sr-only price-radio" data-price="under-500">
+                                    <div class="w-4 h-4 border-2 border-secondary rounded-full mr-3 flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-accent rounded-full opacity-0 transition-opacity duration-200"></div>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Under $500</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="price" class="sr-only price-radio" data-price="500-1000">
+                                    <div class="w-4 h-4 border-2 border-secondary rounded-full mr-3 flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-accent rounded-full opacity-0 transition-opacity duration-200"></div>
+                                    </div>
+                                    <span class="font-inter text-text-primary">$500 - $1,000</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="price" class="sr-only price-radio" data-price="over-1000">
+                                    <div class="w-4 h-4 border-2 border-secondary rounded-full mr-3 flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-accent rounded-full opacity-0 transition-opacity duration-200"></div>
+                                    </div>
+                                    <span class="font-inter text-text-primary">Over $1,000</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Size Filter -->
+                        <div class="mb-8">
+                            <h4 class="font-inter font-semibold text-primary mb-4">Size</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button class="size-filter px-3 py-2 border border-secondary text-text-primary hover:border-accent hover:text-accent transition-colors duration-300 font-inter text-sm" data-size="S">S</button>
+                                <button class="size-filter px-3 py-2 border border-secondary text-text-primary hover:border-accent hover:text-accent transition-colors duration-300 font-inter text-sm" data-size="M">M</button>
+                                <button class="size-filter px-3 py-2 border border-secondary text-text-primary hover:border-accent hover:text-accent transition-colors duration-300 font-inter text-sm" data-size="L">L</button>
+                                <button class="size-filter px-3 py-2 border border-secondary text-text-primary hover:border-accent hover:text-accent transition-colors duration-300 font-inter text-sm" data-size="XL">XL</button>
+                                <button class="size-filter px-3 py-2 border border-secondary text-text-primary hover:border-accent hover:text-accent transition-colors duration-300 font-inter text-sm" data-size="XXL">XXL</button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Collections Grid -->
+                <main class="flex-1">
+                    <!-- Sort and View Options -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="font-inter text-text-secondary">Showing 24 of 156 collections</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <select class="bg-white border border-secondary px-4 py-2 font-inter text-text-primary focus:outline-none focus:border-accent">
+                                <option>Sort by: Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest First</option>
+                                <option>Most Popular</option>
+                            </select>
+                            <div class="flex border border-secondary">
+                                <button class="p-2 bg-accent text-white">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                                    </svg>
+                                </button>
+                                <button class="p-2 bg-white text-text-secondary hover:bg-surface">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collection Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Executive Essentials Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="seasonal wool">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1714974528756-d3c2a651f530" 
+                                         alt="Executive essentials collection featuring premium business suits and formal wear for modern professionals" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.unsplash.com/photo-1585359421369-7cb3a7cd4dcc'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-accent px-2 py-1 text-xs font-inter font-medium mb-2">SEASONAL</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Executive Essentials</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Refined pieces for the modern professional</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $899</span>
+                                            <span class="font-inter text-xs">24 pieces</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weekend Luxury Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="core cotton">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1695300467075-a7230b0cab13" 
+                                         alt="Weekend luxury collection showcasing premium casual wear and sophisticated leisure clothing for discerning gentlemen" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-success px-2 py-1 text-xs font-inter font-medium mb-2">CORE</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Weekend Luxury</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Elevated casual wear for discerning taste</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $399</span>
+                                            <span class="font-inter text-xs">18 pieces</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Heritage Craft Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="limited leather">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1664682333328-713054fca344" 
+                                         alt="Heritage craftsmanship collection displaying traditional tailoring and artisanal menswear with premium leather goods" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-warning px-2 py-1 text-xs font-inter font-medium mb-2">LIMITED</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Heritage Craft</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Timeless pieces with artisanal excellence</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $1,299</span>
+                                            <span class="font-inter text-xs">12 pieces</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cashmere Luxury Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="seasonal cashmere">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1664293797551-2cf5c308d3c1" 
+                                         alt="Luxury cashmere collection featuring premium knitwear and sophisticated sweaters with fine craftsmanship" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.unsplash.com/photo-1652111866880-b029f4d0e4ca'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-accent px-2 py-1 text-xs font-inter font-medium mb-2">SEASONAL</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Cashmere Luxury</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Pure luxury with timeless appeal</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $699</span>
+                                            <span class="font-inter text-xs">16 pieces</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bespoke Tailoring Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="bespoke wool">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940" 
+                                         alt="Bespoke tailoring services showcasing custom suit fittings and personalized menswear craftsmanship" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-error px-2 py-1 text-xs font-inter font-medium mb-2">BESPOKE</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Bespoke Tailoring</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Personalized craftsmanship for you</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $2,499</span>
+                                            <span class="font-inter text-xs">Custom Made</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Urban Professional Collection -->
+                        <div class="group cursor-pointer collection-card" data-collection="core cotton">
+                            <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                                <div class="relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1673350191241-643ba1da9a29" 
+                                         alt="Urban professional collection featuring modern business casual wear and contemporary office attire" 
+                                         class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
+                                         onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <button class="wishlist-btn absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <span class="inline-block bg-success px-2 py-1 text-xs font-inter font-medium mb-2">CORE</span>
+                                        <h3 class="font-playfair font-semibold text-2xl mb-2">Urban Professional</h3>
+                                        <p class="font-inter text-sm opacity-90 mb-3">Modern business casual essentials</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-inter text-sm">From $299</span>
+                                            <span class="font-inter text-xs">32 pieces</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-12">
+                        <button class="btn-primary hover:bg-secondary transform hover:scale-105 transition-all duration-300">
+                            Load More Collections
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship Story Section -->
+    <section class="py-20 bg-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1671707976056-7517e7bec705" 
+                 alt="Master craftsman working on premium menswear in traditional tailoring workshop showcasing artisanal expertise" 
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-playfair font-semibold text-4xl md:text-5xl mb-6">
+                        The Art of Craftsmanship
+                    </h2>
+                    <p class="font-inter text-lg opacity-90 leading-relaxed mb-8">
+                        Every collection begins with a story. Our artisans spend months perfecting each design, sourcing the finest materials from heritage mills across Europe, and employing techniques passed down through generations.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-accent mr-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-inter">Heritage techniques from master craftsmen</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-accent mr-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-inter">Premium materials sourced globally</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-accent mr-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-inter">Sustainable and ethical production</span>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="btn-accent hover:bg-accent/80 transform hover:scale-105 transition-all duration-300">
+                        Explore Our Process
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1501087063833-3773ee886f20" 
+                             alt="Close-up of skilled hands crafting premium leather goods with traditional tools and techniques" 
+                             class="w-full h-40 object-cover shadow-card"
+                             onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
+                        <img src="https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg" 
+                             alt="Premium fabric selection showing luxury textiles and materials used in high-end menswear" 
+                             class="w-full h-32 object-cover shadow-card"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1647421925189-7aae670378ff" 
+                             alt="Artisan tailor working on bespoke suit construction in traditional workshop environment" 
+                             class="w-full h-32 object-cover shadow-card"
+                             onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
+                        <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940" 
+                             alt="Detailed view of precision stitching and construction techniques used in luxury menswear" 
+                             class="w-full h-40 object-cover shadow-card"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Recognition -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair font-semibold text-3xl text-primary mb-4">
+                    Press Recognition
+                </h2>
+                <p class="font-inter text-text-secondary">
+                    Featured in leading publications worldwide
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="text-center">
+                    <div class="text-primary font-playfair font-bold text-2xl mb-2">GQ</div>
+                    <p class="text-text-secondary font-inter text-sm">"Best Menswear Brand 2024"</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-playfair font-bold text-2xl mb-2">ESQUIRE</div>
+                    <p class="text-text-secondary font-inter text-sm">"Editor's Choice Collection"</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-playfair font-bold text-2xl mb-2">FORBES</div>
+                    <p class="text-text-secondary font-inter text-sm">"Luxury Innovation Award"</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary font-playfair font-bold text-2xl mb-2">WSJ</div>
+                    <p class="text-text-secondary font-inter text-sm">"Style Authority Recognition"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="font-playfair font-bold text-2xl mb-4">MASCULINE</h3>
+                    <p class="font-inter text-white/80 mb-6 max-w-md">
+                        Crafting exceptional menswear for the modern gentleman. Where tradition meets innovation in every stitch.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-white/60 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-white/60 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-white/60 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-inter font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="collection_overview.html" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Collections</a></li>
+                        <li><a href="style_guide.html" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Style Guide</a></li>
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="font-inter font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Size Guide</a></li>
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Returns</a></li>
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Shipping</a></li>
+                        <li><a href="javascript:void(0)" class="font-inter text-white/80 hover:text-white transition-colors duration-300">Care Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-12 pt-8 text-center">
+                <p class="font-inter text-white/60">
+                    © 2025 Masculine Luxury Clothing. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            
+            // Add background blur when scrolled
+            if (scrollTop > 50) {
+                header.classList.add('backdrop-blur-md');
+            } else {
+                header.classList.remove('backdrop-blur-md');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Search toggle functionality
+        const searchToggle = document.getElementById('search-toggle');
+        const searchBar = document.getElementById('search-bar');
+        
+        searchToggle.addEventListener('click', function() {
+            searchBar.classList.toggle('-translate-y-full');
+        });
+
+        // Filter functionality
+        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+        const priceRadios = document.querySelectorAll('.price-radio');
+        const sizeFilters = document.querySelectorAll('.size-filter');
+        const collectionCards = document.querySelectorAll('.collection-card');
+        const resetFilters = document.getElementById('reset-filters');
+
+        // Checkbox filter handling
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkmark = this.nextElementSibling.querySelector('svg');
+                if (this.checked) {
+                    checkmark.classList.remove('opacity-0');
+                    this.nextElementSibling.classList.add('border-accent');
+                } else {
+                    checkmark.classList.add('opacity-0');
+                    this.nextElementSibling.classList.remove('border-accent');
+                }
+                applyFilters();
+            });
+        });
+
+        // Radio filter handling
+        priceRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                priceRadios.forEach(r => {
+                    const dot = r.nextElementSibling.querySelector('div');
+                    if (r === this) {
+                        dot.classList.remove('opacity-0');
+                        r.nextElementSibling.classList.add('border-accent');
+                    } else {
+                        dot.classList.add('opacity-0');
+                        r.nextElementSibling.classList.remove('border-accent');
+                    }
+                });
+                applyFilters();
+            });
+        });
+
+        // Size filter handling
+        sizeFilters.forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('border-accent');
+                this.classList.toggle('text-accent');
+                this.classList.toggle('bg-accent/10');
+                applyFilters();
+            });
+        });
+
+        // Reset filters
+        resetFilters.addEventListener('click', function() {
+            // Reset checkboxes
+            filterCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                const checkmark = checkbox.nextElementSibling.querySelector('svg');
+                checkmark.classList.add('opacity-0');
+                checkbox.nextElementSibling.classList.remove('border-accent');
+            });
+
+            // Reset radio buttons
+            priceRadios.forEach(radio => {
+                radio.checked = false;
+                const dot = radio.nextElementSibling.querySelector('div');
+                dot.classList.add('opacity-0');
+                radio.nextElementSibling.classList.remove('border-accent');
+            });
+
+            // Reset size filters
+            sizeFilters.forEach(button => {
+                button.classList.remove('border-accent', 'text-accent', 'bg-accent/10');
+            });
+
+            // Show all cards
+            collectionCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        });
+
+        // Apply filters function
+        function applyFilters() {
+            const activeFilters = [];
+            
+            // Get active collection type filters
+            filterCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    activeFilters.push(checkbox.dataset.filter);
+                }
+            });
+
+            // Get active price filter
+            let activePriceFilter = null;
+            priceRadios.forEach(radio => {
+                if (radio.checked) {
+                    activePriceFilter = radio.dataset.price;
+                }
+            });
+
+            // Get active size filters
+            const activeSizes = [];
+            sizeFilters.forEach(button => {
+                if (button.classList.contains('border-accent')) {
+                    activeSizes.push(button.dataset.size);
+                }
+            });
+
+            // Filter cards
+            collectionCards.forEach(card => {
+                let shouldShow = true;
+                const cardData = card.dataset.collection.split(' ');
+
+                // Check collection type filters
+                if (activeFilters.length > 0) {
+                    const hasMatchingFilter = activeFilters.some(filter => cardData.includes(filter));
+                    if (!hasMatchingFilter) {
+                        shouldShow = false;
+                    }
+                }
+
+                // Apply price filter logic here if needed
+                // Apply size filter logic here if needed
+
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+
+        // Wishlist functionality
+        const wishlistBtns = document.querySelectorAll('.wishlist-btn');
+        wishlistBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('svg');
+                if (icon.getAttribute('fill') === 'none') {
+                    icon.setAttribute('fill', 'currentColor');
+                    icon.classList.add('text-error');
+                } else {
+                    icon.setAttribute('fill', 'none');
+                    icon.classList.remove('text-error');
+                }
+            });
+        });
+
+        // Collection card click to product detail
+        collectionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                window.location.href = 'product_detail.html';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
