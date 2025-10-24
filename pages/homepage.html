@@ -567,6 +567,15 @@
             document.body.classList.add('loaded');
         });
     </script>
-<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(() => console.log('ServiceWorker registered'))
+                    .catch(err => console.warn('ServiceWorker registration failed:', err));
+            });
+        }
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 </html>
