@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Clothing Brand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global CSS Tokens and Styles */
+        :root {
+            /* Colors */
+            --bg-primary: #070708;
+            --bg-secondary: #111214;
+            --accent: #B89A63; /* Muted gold */
+            --text-primary: #EDEDED;
+            --text-secondary: #A0A0A0;
+            --overlay-blur: blur(10px);
+
+            /* Typography */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --heading-size: 4rem;
+            --body-size: 1rem;
+            --letter-spacing-heading: 0.1em;
+            --letter-spacing-body: 0.02em;
+
+            /* Spacing */
+            --gutter: 2rem;
+            --section-padding: 4rem;
+
+            /* Animation Tokens */
+            --anim-micro: 120ms;
+            --anim-mid: 300ms;
+            --anim-macro: 600ms;
+            --ease-micro: cubic-bezier(0.0, 0.0, 0.2, 1); /* ease-out-cubic approx */
+            --ease-mid: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-macro: ease-in-out;
+            --stagger-delay: 120ms;
+
+            /* Performance */
+            --will-change: transform, opacity;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+            .page-transition { opacity: 1 !important; transform: none !important; }
+            .section-entry { opacity: 1 !important; transform: none !important; }
+            .hover-scale { transform: none !important; }
+            .click-pop { transform: none !important; }
+        }
+
+        /* Global Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scalePop {
+            0% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes svgReveal {
+            from { stroke-dashoffset: 100%; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes vignettePulse {
+            from { box-shadow: inset 0 0 150px var(--bg-primary); }
+            to { box-shadow: inset 0 0 250px var(--bg-primary); }
+        }
+
+        /* Subtle Grain Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" stitchTiles="stitch" result="noise"/><feColorMatrix in="noise" type="matrix" values=".33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 1 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>') repeat;
+            pointer-events: none;
+            z-index: 9999;
+            animation: grain 8s steps(8) infinite;
+        }
+
+        @keyframes grain {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        /* Page Transitions */
+        .page-transition {
+            transition: opacity var(--anim-macro) var(--ease-macro), transform var(--anim-macro) var(--ease-macro);
+        }
+
+        .page-transition.fade-out { opacity: 0; }
+        .page-transition.slide-left { transform: translateX(-100%); }
+        .page-transition.slide-right { transform: translateX(100%); }
+
+        /* Section Entry */
+        .section-entry {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp var(--anim-mid) var(--ease-mid) forwards;
+        }
+
+        .section-entry:nth-child(1) { animation-delay: 0ms; }
+        .section-entry:nth-child(2) { animation-delay: var(--stagger-delay); }
+        .section-entry:nth-child(3) { animation-delay: calc(2 * var(--stagger-delay)); }
+
+        /* Microinteractions */
+        .hover-scale:hover {
+            transform: scale(1.02);
+            transition: transform var(--anim-micro) var(--ease-micro);
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+        }
+
+        .click-pop:active {
+            transform: scale(0.96);
+            transition: transform var(--anim-micro) var(--ease-micro);
+        }
+
+        /* Modal/Popup */
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: var(--overlay-blur);
+            opacity: 0;
+            transition: opacity var(--anim-mid) var(--ease-mid);
+        }
+
+        .modal {
+            transform: scale(0.98);
+            opacity: 0;
+            transition: transform var(--anim-micro) var(--ease-micro), opacity var(--anim-micro) var(--ease-micro);
+        }
+
+        .modal.show, .modal-backdrop.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            :root {
+                --heading-size: 3rem;
+                --gutter: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --heading-size: 2.5rem;
+                --gutter: 1rem;
+            }
+        }
+
+        /* Accessibility */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <!-- Header Component -->
+    <header class="header" role="banner">
+        <div class="header-inner" style="background: rgba(7,7,8,0.8); backdrop-filter: blur(5px); position: fixed; top: 0; width: 100%; z-index: 1000; transition: transform var(--anim-micro) var(--ease-micro), height var(--anim-micro) var(--ease-micro);">
+            <div class="logo">
+                <svg width="100" height="50" viewBox="0 0 100 50" style="stroke: var(--accent); stroke-dasharray: 100%; animation: svgReveal var(--anim-macro) var(--ease-macro) forwards;">
+                    <!-- Simplified SVG logo path -->
+                    <path d="M10 10 L90 10 L90 40 L10 40 Z" fill="none" stroke-width="2"/>
+                </svg>
+            </div>
+            <nav aria-label="Primary navigation">
+                <ul style="list-style: none; display: flex; gap: var(--gutter); text-transform: uppercase; letter-spacing: var(--letter-spacing-heading);">
+                    <li><a href="#" class="hover-scale">Shop</a></li>
+                    <li><a href="#" class="hover-scale">Lookbook</a></li>
+                    <li><a href="#" class="hover-scale">About</a></li>
+                </ul>
+            </nav>
+            <div class="utilities">
+                <button aria-label="Search" class="hover-scale click-pop"><i class="icon-search"></i></button>
+                <button aria-label="Account" class="hover-scale click-pop"><i class="icon-account"></i></button>
+                <button aria-label="Cart" class="hover-scale click-pop"><i class="icon-cart"></i> <span class="cart-count">0</span></button>
+            </div>
+        </div>
+        <!-- Header Carousel -->
+        <div class="header-carousel" style="position: relative; overflow: hidden; height: 400px;">
+            <!-- Carousel items with parallax -->
+            <div class="carousel-item active" style="position: absolute; width: 100%; height: 100%; transition: transform var(--anim-macro) var(--ease-macro), opacity var(--anim-macro) var(--ease-macro);">
+                <img src="https://via.placeholder.com/1920x400?text=Hero+Image+1" alt="Editorial Image 1" style="width: 100%; height: 100%; object-fit: cover; transform: translate3d(0,0,0);">
+                <div class="parallax-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, var(--bg-primary)); transform: translate3d(0,0,0);"></div>
+            </div>
+            <!-- Additional items... -->
+            <button class="carousel-prev" aria-label="Previous"><i class="icon-left"></i></button>
+            <button class="carousel-next" aria-label="Next"><i class="icon-right"></i></button>
+            <div class="carousel-progress" style="position: absolute; bottom: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform 6000ms linear;"></div>
+        </div>
+    </header>
+    <a href="#main" class="skip-to-content" style="position: absolute; top: -9999px;">Skip to content</a>
+
+    <!-- Main Content -->
+    <main id="main" class="page-transition">
+        <!-- Hero Section -->
+        <section class="hero" style="position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--section-padding);">
+            <div class="hero-content">
+                <h1 class="section-entry" style="font-family: var(--font-serif); font-size: var(--heading-size); letter-spacing: var(--letter-spacing-heading);">Exquisite Craftsmanship</h1>
+                <p class="section-entry" style="font-size: 1.5rem; max-width: 60ch;">Discover our latest collection of timeless pieces.</p>
+                <a href="#" class="cta hover-scale click-pop section-entry" style="background: var(--accent); color: var(--bg-primary); padding: 1rem 2rem; text-decoration: none;">Shop Now</a>
+            </div>
+            <img src="https://via.placeholder.com/1920x1080?text=Cinematic+Hero" alt="Hero Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) brightness(0.8);">
+            <div class="vignette" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 200px var(--bg-primary); animation: vignettePulse 10s ease-in-out infinite alternate;"></div>
+        </section>
+
+        <!-- Shop Grid Section -->
+        <section class="shop-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gutter); padding: var(--section-padding);">
+            <div class="product-card hover-scale" style="position: relative; overflow: hidden;">
+                <img src="https://via.placeholder.com/300x400?text=Product+1" alt="Product 1" loading="lazy" style="width: 100%; transition: opacity var(--anim-mid) var(--ease-mid);">
+                <div class="product-info" style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); padding: 1rem; opacity: 0; transition: opacity var(--anim-micro) var(--ease-micro);">
+                    <h3>Product Name</h3>
+                    <p>$500</p>
+                    <button class="quick-add click-pop">Quick Add</button>
+                </div>
+            </div>
+            <!-- Additional cards... -->
+        </section>
+
+        <!-- Product Detail (Example) -->
+        <section class="product-detail" style="display: flex; gap: var(--gutter); padding: var(--section-padding);">
+            <div class="product-carousel" style="flex: 1; position: relative;">
+                <!-- Carousel similar to header -->
+                <img src="https://via.placeholder.com/600x800?text=Product+Image" alt="Product" style="width: 100%;">
+            </div>
+            <div class="product-info" style="flex: 1;">
+                <h1 style="font-family: var(--font-serif);">Product Title</h1>
+                <p>$500</p>
+                <div class="swatches" style="display: flex; gap: 1rem;">
+                    <button class="swatch hover-scale click-pop" style="background: #B89A63; width: 30px; height: 30px;"></button>
+                    <!-- More swatches -->
+                </div>
+                <button class="add-to-cart sticky-bar" style="position: sticky; bottom: 0; background: var(--accent); color: var(--bg-primary); width: 100%; padding: 1rem;">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- About Section (Timeline Example) -->
+        <section class="about" style="padding: var(--section-padding);">
+            <h2 class="section-entry" style="font-family: var(--font-serif);">Our Craftsmanship</h2>
+            <div class="timeline">
+                <div class="timeline-item section-entry">
+                    <svg class="stroke-reveal" width="100" height="100" style="stroke-dasharray: 100%; animation: svgReveal var(--anim-macro) var(--ease-macro);">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke-width="2" stroke="var(--accent)"/>
+                    </svg>
+                    <p>Year 1: Founded</p>
+                </div>
+                <!-- More items -->
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel -->
+        <section class="testimonials" style="padding: var(--section-padding);">
+            <div class="testimonial-carousel" style="display: flex; overflow: hidden; position: relative;">
+                <div class="testimonial-card" style="flex: 0 0 100%; transition: transform var(--anim-macro) var(--ease-macro);">
+                    <p>"Exquisite quality."</p>
+                    <cite>- Client</cite>
+                </div>
+                <!-- More cards -->
+            </div>
+        </section>
+
+        <!-- Cart Drawer -->
+        <div class="cart-drawer" style="position: fixed; top: 0; right: -100%; width: 400px; height: 100%; background: var(--bg-secondary); transition: transform var(--anim-mid) var(--ease-mid); z-index: 1001;">
+            <!-- Cart content -->
+            <button class="close-drawer click-pop">Close</button>
+        </div>
+        <div class="modal-backdrop"></div>
+    </main>
+
+    <!-- Footer Component -->
+    <footer style="background: var(--bg-secondary); padding: var(--section-padding); display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter);">
+        <div class="brand">
+            <svg class="mini-logo" width="50" height="25" viewBox="0 0 100 50" style="stroke: var(--accent); stroke-dasharray: 100%; animation: svgReveal var(--anim-macro) var(--ease-macro);">
+                <path d="M10 10 L90 10 L90 40 L10 40 Z" fill="none" stroke-width="2"/>
+            </svg>
+            <p>Confident, minimal, aspirational.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+            <ul style="list-style: none;">
+                <li><a href="#" class="underline-reveal">Shop</a></li>
+                <!-- More links -->
+            </ul>
+        </nav>
+        <div class="services">
+            <h4>Client Services</h4>
+            <ul style="list-style: none;">
+                <li><a href="#" class="underline-reveal">Shipping</a></li>
+                <!-- More -->
+            </ul>
+        </div>
+        <div class="social-newsletter">
+            <h4>Newsletter</h4>
+            <form>
+                <input type="email" placeholder="Email" style="background: transparent; border-bottom: 1px solid var(--text-secondary); transition: border-color var(--anim-micro) var(--ease-micro);">
+                <button type="submit" class="hover-scale">Subscribe</button>
+            </form>
+            <!-- Social icons -->
+        </div>
+        <div class="legal" style="grid-column: 1 / -1; font-size: 0.8rem; color: var(--text-secondary);">
+            <a href="#">Privacy</a> | <a href="#">Terms</a>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer Specific */
+        .underline-reveal {
+            position: relative;
+        }
+        .underline-reveal::after {
+            content: '';
+            position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent);
+            transition: width var(--anim-micro) var(--ease-micro);
+        }
+        .underline-reveal:hover::after {
+            width: 100%;
+        }
+
+        /* Newsletter Focus */
+        input:focus {
+            border-color: var(--accent);
+        }
+    </style>
+
+    <script>
+        // JavaScript for Interactions
+
+        // Header Scroll Behavior
+        let lastScroll = 0;
+        const header = document.querySelector('.header-inner');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+                if (currentScroll > 100) {
+                    header.style.height = '60px'; // Shrink
+                    header.querySelector('nav ul').style.letterSpacing = '0.05em';
+                } else {
+                    header.style.height = 'auto';
+                    // Read the CSS variable value from :root and apply it
+                    const rootLetterSpacing = getComputedStyle(document.documentElement).getPropertyValue('--letter-spacing-heading').trim();
+                    header.querySelector('nav ul').style.letterSpacing = rootLetterSpacing || '0.1em';
+                }
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Carousel Autoplay (Header Example)
+        const carouselProgress = document.querySelector('.carousel-progress');
+        let autoplayInterval = setInterval(() => {
+            // Logic to next slide
+            carouselProgress.style.transform = 'scaleX(0)'; // Reset
+        }, 6000);
+
+        document.querySelector('.header-carousel').addEventListener('mouseover', () => clearInterval(autoplayInterval));
+        document.querySelector('.header-carousel').addEventListener('mouseout', () => {
+            // Restart interval
+        });
+
+        // Page Transition Example (on link click)
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (link.href.includes('#')) return; // Skip anchors
+                e.preventDefault();
+                const main = document.querySelector('main');
+                main.classList.add('fade-out');
+                setTimeout(() => {
+                    main.classList.add('slide-left'); // Or right based on nav
+                    setTimeout(() => {
+                        window.location = link.href;
+                    }, 400);
+                }, 200);
+            });
+        });
+
+        // Modal Example
+        function showModal(modal) {
+            modal.classList.add('show');
+            document.querySelector('.modal-backdrop').classList.add('show');
+            modal.focus(); // Focus trap
+        }
+
+        // Cart Drawer
+        document.querySelector('.icon-cart').parentElement.addEventListener('click', () => {
+            document.querySelector('.cart-drawer').style.transform = 'translateX(0)';
+        });
+        document.querySelector('.close-drawer').addEventListener('click', () => {
+            document.querySelector('.cart-drawer').style.transform = 'translateX(100%)';
+        });
+
+        // Intersection Observer for Section Entries
+        const sections = document.querySelectorAll('.section-entry');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+
+        // Lazy Loading
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.style.opacity = 0;
+            img.addEventListener('load', () => {
+                img.style.transition = 'opacity var(--anim-mid) var(--ease-mid)';
+                img.style.opacity = 1;
+            });
+        });
+
+        // Parallax on Hero (Pointer Move)
+        const hero = document.querySelector('.hero');
+        hero.addEventListener('mousemove', e => {
+            const { clientX, clientY } = e;
+            const x = (clientX / window.innerWidth) * 2 - 1;
+            const y = (clientY / window.innerHeight) * 2 - 1;
+            hero.querySelector('img').style.transform = `translate3d(${x * 2}px, ${y * 2}px, 0)`;
+        });
+
+        // Vignette Animation
+        // (moved to the <style> block in the document head)
+
+        // Touch Swipe for Carousels (Simplified)
+        // Use libraries like Swiper.js for production
+
+        // ARIA and Keyboard Support
+        // Example for Carousel Buttons
+        document.querySelector('.carousel-next').addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                // Next logic
+            }
+        });
+
+        // Focus Trap for Modals
+        function trapFocus(modal) {
+            const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            modal.addEventListener('keydown', e => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

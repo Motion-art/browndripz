@@ -6,12 +6,7 @@
     <title>Guaptap Luxury Clothing - Premium Menswear for the Modern Gentleman</title>
     <link rel="stylesheet" href="../css/main.css">
     <meta name="description" content="Discover premium Guaptap luxury clothing where tradition meets innovation. Crafted for the modern gentleman who values quality over quantity.">
-    <meta http-equiv="Cache-Control" content="max-age=86400, must-revalidate">
-    <link rel="preload" href="../css/main.css" as="style">
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="preconnect" href="https://images.pixabay.com">
-    <script defer src="../js/performance.js"></script>
-  <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fmasculine7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
   <script type="module" src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
   </head>
 <body class="bg-background font-inter">
@@ -22,9 +17,8 @@
                 <div class="flex items-center justify-between h-16">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <!-- Wordmark: text-only header. To add a logo later, insert an <img> before the span. -->
-                        <a href="homepage.html" class="text-white tracking-wider">
-                            <span class="font-playfair font-bold text-2xl md:text-3xl">GUAPTAP</span>
+                        <a href="homepage.html" class="text-white font-playfair font-bold text-xl tracking-wider">
+                            GUAPTAP
                         </a>
                     </div>
                     
@@ -75,12 +69,10 @@
         <div class="relative h-full">
             <!-- Slide 1 -->
             <div class="absolute inset-0 transition-opacity duration-1000">
-                <img src="https://motion-art.github.io/browndripz/assets/guaptap.jpeg"
+                <img src="../assets/guaptap.jpeg" 
                      alt="Sophisticated gentleman in premium tailored suit showcasing Guaptap luxury fashion" 
                      class="w-full h-full object-cover"
-                     loading="eager"
-                     fetchpriority="high"
-                     onerror="console.error('Failed to load image:', this.src); this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
+                     onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
             </div>
             
             <!-- Hero Content -->
@@ -570,15 +562,6 @@
             document.body.classList.add('loaded');
         });
     </script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(() => console.log('ServiceWorker registered'))
-                    .catch(err => console.warn('ServiceWorker registration failed:', err));
-            });
-        }
-    </script>
-    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 </html>
