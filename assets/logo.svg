@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" role="img" aria-labelledby="title desc">
+  <title id="title">Guaptap</title>
+  <desc id="desc">Wordmark and symbol logo placeholder for Guaptap brand</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B88936"/>
+    </linearGradient>
+    <style><![CDATA[
+      .word { font-family: 'Playfair Display', 'Georgia', serif; font-weight: 700; font-size: 72px; fill: url(#g); letter-spacing: 6px; }
+      .mark { fill: #111214; stroke: url(#g); stroke-width: 6px; }
+    ]]></style>
+  </defs>
+
+  <!-- circular monogram mark -->
+  <g transform="translate(90,100)">
+    <circle r="60" fill="#070708" stroke="url(#g)" stroke-width="6" />
+    <text x="0" y="18" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="40" fill="url(#g)">G</text>
+  </g>
+
+  <!-- wordmark -->
+  <g transform="translate(200,130)">
+    <text class="word">GUAPTAP</text>
+  </g>
+</svg>
