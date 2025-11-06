@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Guaptap Luxury Clothing - Premium Streetwear for the Urban Scene</title>
     <link rel="stylesheet" href="css/main.css">
     <meta name="description" content="Discover Guaptap — premium streetwear that fuses heritage craftsmanship with urban attitude. Designed for the city, built for the streets.">
     
-    <!-- Mobile-Optimized Hero Video Fix -->
+    <!-- Mobile-Optimized Hero Video Fix + Logo Styling -->
     <style>
         /* Mobile adjustments for hero video */
         @media (max-width: 768px) {
@@ -34,26 +34,50 @@
             }
         }
 
-        /* Ensure smooth fallback if video fails */
-        #hero-video::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
-            z-index: 1;
+        /* Logo styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 640px) {
+            .logo-img {
+                height: 28px;
+            }
+            .logo-text {
+                font-size: 1.125rem !important;
+            }
         }
     </style>
 </head>
 <body class="bg-background font-inter">
     <!-- Header Navigation -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-400 transition-premium">
-        <div class="bg-primary/90 backdrop-blur-md border-b border-secondary/20">
+        <div class="bg-primary/90 border-b border-secondary/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
-                    <!-- Logo -->
+                    <!-- Logo with Icon -->
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-white font-playfair font-bold text-xl tracking-wider">
-                            GUAPTAP
+                        <a href="index.html" class="logo-container">
+                            <img src="assets/guaptap.jpeg" 
+                                 alt="Guaptap Logo" 
+                                 class="logo-img"
+                                 onerror="this.style.display='none'">
+                            <span class="text-white font-playfair font-bold text-xl tracking-wider logo-text">
+                                GUAPTAP
+                            </span>
                         </a>
                     </div>
                     
@@ -140,7 +164,6 @@
         </div>
     </section>
 
-    <!-- [Rest of your sections remain unchanged] -->
     <!-- Featured Collections -->
     <section class="py-20 bg-surface">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -561,58 +584,67 @@
         </div>
     </footer>
 
+    <!-- OPTIMIZED SCRIPTS (Replace your old ones) -->
     <script>
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
-        
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            
-            if (scrollTop > 50) {
-                header.classList.add('backdrop-blur-md');
-            } else {
-                header.classList.remove('backdrop-blur-md');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
+      // OPTIMIZED SCROLL HANDLER (Throttled + GPU-Friendly)
+      let ticking = false;
+      let lastScrollTop = 0;
+      const header = document.getElementById('main-header');
+      const delta = 5; // Minimum scroll distance to trigger
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+      function updateHeader() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Mobile video autoplay fix
-        (function(){
-            var v = document.getElementById('hero-video');
-            if(!v) return;
-            try { v.muted = true; } catch(e) {}
-            function tryPlay(){
-                var p = v.play();
-                if(p && p.catch) p.catch(() => {});
-            }
-            window.addEventListener('load', tryPlay);
-            ['touchstart','pointerdown','mousedown'].forEach(evt => {
-                window.addEventListener(evt, () => tryPlay(), {once:true, passive:true});
-            });
-            document.addEventListener('visibilitychange', () => { if(!document.hidden) tryPlay(); });
-        })();
+        if (Math.abs(scrollTop - lastScrollTop) < delta) {
+          ticking = false;
+          return;
+        }
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+
+        if (scrollTop > 50) {
+          header.classList.add('has-blur');
+        } else {
+          header.classList.remove('has-blur');
+        }
+
+        lastScrollTop = scrollTop;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Pre-warm GPU layers on load
+      window.addEventListener('load', () => {
+        header.style.transform = 'translateZ(0)';
+        header.style.willChange = 'transform';
+        document.body.classList.add('loaded');
+      });
+
+      // Mobile video autoplay fix
+      (function () {
+        const v = document.getElementById('hero-video');
+        if (!v) return;
+        v.muted = true;
+        function tryPlay() {
+          v.play().catch(() => {});
+        }
+        ['load', 'touchstart', 'click'].forEach(evt =>
+          window.addEventListener(evt, tryPlay, { once: true, passive: true })
+        );
+      })();
     </script>
 
-    <!-- Lazy-load third-party scripts -->
+    <!-- Lazy-load third-party and injector scripts -->
     <script>
         (function(){
             function loadScript(src, isModule){
@@ -622,13 +654,16 @@
                 s.async = true;
                 document.body.appendChild(s);
             }
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    try {
+
+            window.addEventListener('load', function(){
+                setTimeout(function(){
+                    try{
                         loadScript('https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9', true);
                         loadScript('https://static.rocket.new/rocket-shot.js?v=0.0.1', true);
                         loadScript('/public/dhws-data-injector.js', false);
-                    } catch(e) { console.warn('Lazy loader failed', e); }
+                    }catch(e){
+                        console.warn('Lazy loader failed', e);
+                    }
                 }, 1000);
             });
         })();
