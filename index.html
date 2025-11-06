@@ -68,7 +68,7 @@
         <div class="relative h-full">
             <!-- Slide 1 -->
             <div class="absolute inset-0 transition-opacity duration-1000">
-                <video autoplay muted playsinline loop class="w-full h-full object-cover" style="object-position: center 30%;">
+                <video id="hero-video" autoplay muted playsinline webkit-playsinline preload="metadata" loop class="w-full h-full object-cover" style="object-position: center 30%;">
                     <source src="assets/guap_header.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -562,6 +562,34 @@
         });
     </script>
 <!-- Lazy-load third-party and injector scripts to reduce potential runtime reloads and improve paint -->
+<script>
+    // Ensure the hero video attempts to play on mobile (many mobile browsers block autoplay until user interaction).
+    (function(){
+        var v = document.getElementById('hero-video');
+        if(!v) return;
+
+        // Guarantee muted flag (some browsers require this for autoplay)
+        try { v.muted = true; } catch(e) {}
+
+        function tryPlay(){
+            var p = v.play();
+            if(p && p.catch){
+                p.catch(function(){ /* play prevented - will try on user interaction */ });
+            }
+        }
+
+        // Try on load
+        window.addEventListener('load', tryPlay);
+
+        // Try again on first user interaction (touch/click). Use once:true so handler auto-removes.
+        ['touchstart','pointerdown','mousedown'].forEach(function(evt){
+            window.addEventListener(evt, function(){ tryPlay(); }, {once:true, passive:true});
+        });
+
+        // Resume when user returns to the tab / screen
+        document.addEventListener('visibilitychange', function(){ if(!document.hidden){ tryPlay(); } });
+    })();
+</script>
 <script>
     (function(){
         function loadScript(src, isModule){
