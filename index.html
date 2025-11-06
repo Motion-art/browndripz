@@ -6,7 +6,43 @@
     <title>Guaptap Luxury Clothing - Premium Streetwear for the Urban Scene</title>
     <link rel="stylesheet" href="css/main.css">
     <meta name="description" content="Discover Guaptap — premium streetwear that fuses heritage craftsmanship with urban attitude. Designed for the city, built for the streets.">
-    <!-- Rocket scripts deferred: loaded lazily at end of page to avoid blocking/side-effects during scroll -->
+    
+    <!-- Mobile-Optimized Hero Video Fix -->
+    <style>
+        /* Mobile adjustments for hero video */
+        @media (max-width: 768px) {
+            #hero-carousel {
+                height: 75vh;
+            }
+            
+            #hero-video {
+                width: auto;
+                height: 100%;
+                max-width: none;
+                min-width: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero-carousel {
+                height: 70vh;
+            }
+        }
+
+        /* Ensure smooth fallback if video fails */
+        #hero-video::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            z-index: 1;
+        }
+    </style>
 </head>
 <body class="bg-background font-inter">
     <!-- Header Navigation -->
@@ -68,7 +104,15 @@
         <div class="relative h-full">
             <!-- Slide 1 -->
             <div class="absolute inset-0 transition-opacity duration-1000">
-                <video id="hero-video" autoplay muted playsinline webkit-playsinline preload="metadata" loop class="w-full h-full object-cover" style="object-position: center 30%;">
+                <video id="hero-video" 
+                       autoplay 
+                       muted 
+                       playsinline 
+                       webkit-playsinline 
+                       preload="metadata" 
+                       loop 
+                       class="absolute inset-0 w-full h-full object-cover md:object-cover"
+                       style="object-position: center;">
                     <source src="assets/guap_header.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -96,11 +140,12 @@
         </div>
     </section>
 
+    <!-- [Rest of your sections remain unchanged] -->
     <!-- Featured Collections -->
     <section class="py-20 bg-surface">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                    <h2 class="font-playfair font-semibold text-4xl md:text-5xl text-primary mb-4">
+                <h2 class="font-playfair font-semibold text-4xl md:text-5xl text-primary mb-4">
                     Signature Collections
                 </h2>
                 <p class="font-inter text-text-secondary text-lg max-w-2xl mx-auto">
@@ -165,7 +210,7 @@
 
     <!-- Brand Story Teaser -->
     <section class="py-20 bg-primary text-white relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 opacity-10">
             <img src="https://images.unsplash.com/photo-1671707976056-7517e7bec705" 
                  alt="Design crew crafting streetwear pieces in a studio environment" 
                  class="w-full h-full object-cover"
@@ -525,14 +570,11 @@
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down
                 header.style.transform = 'translateY(-100%)';
             } else {
-                // Scrolling up
                 header.style.transform = 'translateY(0)';
             }
             
-            // Add background blur when scrolled
             if (scrollTop > 50) {
                 header.classList.add('backdrop-blur-md');
             } else {
@@ -542,76 +584,54 @@
             lastScrollTop = scrollTop;
         });
 
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-        });
-    </script>
-<!-- Lazy-load third-party and injector scripts to reduce potential runtime reloads and improve paint -->
-<script>
-    // Ensure the hero video attempts to play on mobile (many mobile browsers block autoplay until user interaction).
-    (function(){
-        var v = document.getElementById('hero-video');
-        if(!v) return;
-
-        // Guarantee muted flag (some browsers require this for autoplay)
-        try { v.muted = true; } catch(e) {}
-
-        function tryPlay(){
-            var p = v.play();
-            if(p && p.catch){
-                p.catch(function(){ /* play prevented - will try on user interaction */ });
+        // Mobile video autoplay fix
+        (function(){
+            var v = document.getElementById('hero-video');
+            if(!v) return;
+            try { v.muted = true; } catch(e) {}
+            function tryPlay(){
+                var p = v.play();
+                if(p && p.catch) p.catch(() => {});
             }
-        }
+            window.addEventListener('load', tryPlay);
+            ['touchstart','pointerdown','mousedown'].forEach(evt => {
+                window.addEventListener(evt, () => tryPlay(), {once:true, passive:true});
+            });
+            document.addEventListener('visibilitychange', () => { if(!document.hidden) tryPlay(); });
+        })();
+    </script>
 
-        // Try on load
-        window.addEventListener('load', tryPlay);
-
-        // Try again on first user interaction (touch/click). Use once:true so handler auto-removes.
-        ['touchstart','pointerdown','mousedown'].forEach(function(evt){
-            window.addEventListener(evt, function(){ tryPlay(); }, {once:true, passive:true});
-        });
-
-        // Resume when user returns to the tab / screen
-        document.addEventListener('visibilitychange', function(){ if(!document.hidden){ tryPlay(); } });
-    })();
-</script>
-<script>
-    (function(){
-        function loadScript(src, isModule){
-            var s = document.createElement('script');
-            if (isModule) s.type = 'module';
-            s.src = src;
-            s.async = true;
-            document.body.appendChild(s);
-        }
-
-        window.addEventListener('load', function(){
-            setTimeout(function(){
-                try{
-                    loadScript('https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9', true);
-                    loadScript('https://static.rocket.new/rocket-shot.js?v=0.0.1', true);
-                    loadScript('/public/dhws-data-injector.js', false);
-                }catch(e){
-                    console.warn('Lazy loader failed', e);
-                }
-            }, 1000);
-        });
-    })();
-</script>
+    <!-- Lazy-load third-party scripts -->
+    <script>
+        (function(){
+            function loadScript(src, isModule){
+                var s = document.createElement('script');
+                if (isModule) s.type = 'module';
+                s.src = src;
+                s.async = true;
+                document.body.appendChild(s);
+            }
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    try {
+                        loadScript('https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9', true);
+                        loadScript('https://static.rocket.new/rocket-shot.js?v=0.0.1', true);
+                        loadScript('/public/dhws-data-injector.js', false);
+                    } catch(e) { console.warn('Lazy loader failed', e); }
+                }, 1000);
+            });
+        })();
+    </script>
 </body>
 </html>
