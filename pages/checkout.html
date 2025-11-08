@@ -17,7 +17,7 @@
                 <div class="flex items-center justify-between h-16">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <a href="homepage.html" class="text-white font-playfair font-bold text-xl tracking-wider">
+                        <a href="../index.html" class="text-white font-playfair font-bold text-xl tracking-wider">
                             GUAPTAP
                         </a>
                     </div>
@@ -639,6 +639,47 @@
             }
         });
     </script>
+    <script>
+  // OPTIMIZED HEADER SCROLl
+  function updateHeader() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (Math.abs(scrollTop - lastScrollTop) < delta) {
+      ticking = false;
+      return;
+    }
+
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      header.style.transform = 'translateY(0)';
+    }
+
+    if (scrollTop > 50) {
+      header.classList.add('has-blur');
+    } else {
+      header.classList.remove('has-blur');
+    }
+
+    lastScrollTop = scrollTop;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // GPU pre-warm
+  window.addEventListener('load', () => {
+    if (header) {
+      header.style.transform = 'translateZ(0)';
+      header.style.willChange = 'transform';
+    }
+  });
+</script>
 <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 </html>
