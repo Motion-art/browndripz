@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collections - Guaptap Luxury Clothing | Premium Streetwear Collections</title>
     <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Hover effect for craftsmanship videos */
+        .craft-video {
+            transition: transform 0.35s ease, filter 0.35s ease;
+            transform-origin: center center;
+            cursor: pointer;
+        }
+        .craft-video:hover {
+            transform: scale(1.05);
+            filter: brightness(1.06);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .craft-video { transition: none; }
+        }
+    </style>
     <meta name="description" content="Explore our curated streetwear drops. From core essentials to limited-edition collaborations, discover pieces made for city life and street style.">
     <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
   <script type="module" src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
@@ -485,13 +500,18 @@
 
     <!-- Craftsmanship Story Section -->
     <section class="py-20 bg-primary text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <img src="https://images.unsplash.com/photo-1671707976056-7517e7bec705" 
-                                         alt="Master craftspeople working on Guaptap streetwear in a studio showcasing artisanal expertise" 
-                 class="w-full h-full object-cover"
-                 onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
+        <!-- Use a looping video for the craftsmanship background. Reduced opacity to 6% to lower visual intensity. -->
+        <div class="absolute inset-0" style="opacity:0.06;">
+            <video autoplay muted loop playsinline poster="../assets/guap_collections.jpeg" class="w-full h-full object-cover">
+                <source src="../assets/guaptap.mp4" type="video/mp4">
+                <!-- Fallback image if video isn't supported -->
+                <img src="https://images.unsplash.com/photo-1671707976056-7517e7bec705" 
+                     alt="Master craftspeople working on Guaptap streetwear in a studio showcasing artisanal expertise" 
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
+            </video>
         </div>
-        
+
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -527,62 +547,45 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1501087063833-3773ee886f20" 
-                             alt="Close-up of skilled hands crafting premium leather goods with traditional tools and techniques" 
-                             class="w-full h-40 object-cover shadow-card"
-                             onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-                        <img src="https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg" 
-                             alt="Premium fabric selection showing textiles and materials used in Guaptap streetwear" 
-                             class="w-full h-32 object-cover shadow-card"
-                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1501087063833-3773ee886f20" class="w-full h-40 object-cover shadow-card craft-video">
+                            <source src="../assets/guap_show1.mp4" type="video/mp4">
+                            <img src="https://images.unsplash.com/photo-1501087063833-3773ee886f20" 
+                                 alt="Close-up of skilled hands crafting premium leather goods with traditional tools and techniques" 
+                                 class="w-full h-40 object-cover shadow-card"
+                                 onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
+                        </video>
+
+                        <video autoplay muted loop playsinline poster="https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg" class="w-full h-32 object-cover shadow-card craft-video">
+                            <source src="../assets/guap_show2.mp4" type="video/mp4">
+                            <img src="https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg" 
+                                 alt="Premium fabric selection showing textiles and materials used in Guaptap streetwear" 
+                                 class="w-full h-32 object-cover shadow-card"
+                                 onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        </video>
                     </div>
                     <div class="space-y-4 pt-8">
-                        <img src="https://images.unsplash.com/photo-1647421925189-7aae670378ff" 
-                             alt="Artisan tailor working on bespoke suit construction in traditional workshop environment" 
-                             class="w-full h-32 object-cover shadow-card"
-                             onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
-                        <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940" 
-                             alt="Detailed view of precision stitching and construction techniques used in Guaptap streetwear" 
-                             class="w-full h-40 object-cover shadow-card"
-                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1647421925189-7aae670378ff" class="w-full h-32 object-cover shadow-card craft-video">
+                            <source src="../assets/guap_show3.mp4" type="video/mp4">
+                            <img src="https://images.unsplash.com/photo-1647421925189-7aae670378ff" 
+                                 alt="Artisan tailor working on bespoke suit construction in traditional workshop environment" 
+                                 class="w-full h-32 object-cover shadow-card"
+                                 onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
+                        </video>
+
+                        <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940" class="w-full h-40 object-cover shadow-card craft-video">
+                            <source src="../assets/guap_header.mp4" type="video/mp4">
+                            <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940" 
+                                 alt="Detailed view of precision stitching and construction techniques used in Guaptap streetwear" 
+                                 class="w-full h-40 object-cover shadow-card"
+                                 onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        </video>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Press Recognition -->
-    <section class="py-16 bg-surface">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-playfair font-semibold text-3xl text-primary mb-4">
-                    Press Recognition
-                </h2>
-                <p class="font-inter text-text-secondary">
-                    Featured in leading publications worldwide
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <div class="text-center">
-                    <div class="text-primary font-playfair font-bold text-2xl mb-2">GQ</div>
-                    <p class="text-text-secondary font-inter text-sm">"Best Streetwear Brand 2024"</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-primary font-playfair font-bold text-2xl mb-2">ESQUIRE</div>
-                    <p class="text-text-secondary font-inter text-sm">"Editor's Choice Collection"</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-primary font-playfair font-bold text-2xl mb-2">FORBES</div>
-                    <p class="text-text-secondary font-inter text-sm">"Luxury Innovation Award"</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-primary font-playfair font-bold text-2xl mb-2">WSJ</div>
-                    <p class="text-text-secondary font-inter text-sm">"Style Authority Recognition"</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Press Recognition removed per request -->
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-16">
