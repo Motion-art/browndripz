@@ -19,6 +19,13 @@
         @media (prefers-reduced-motion: reduce) {
             .craft-video { transition: none; }
         }
+        /* Mobile header video: hidden on desktop, shown only on small viewports */
+        .mobile-header-video { display: none; }
+        .header-bg-img { display: block; }
+        @media (max-width: 768px) {
+            .mobile-header-video { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+            .header-bg-img { display: none; }
+        }
     </style>
     <meta name="description" content="Explore our curated streetwear drops. From core essentials to limited-edition collaborations, discover pieces made for city life and street style.">
     <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
@@ -78,12 +85,21 @@
 
     <!-- Combined Breadcrumb & Page Header -->
 <section class="relative overflow-hidden bg-primary text-white" style="min-height:480px;">
-    <!-- Background Image -->
-    <div class="absolute inset-0" style="opacity:0.30;">
-        <img src="../assets/guap_collections.jpeg" 
-             alt="Design studio showcasing streetwear sampling and fabric selection for urban apparel" 
-             class="w-full h-full object-cover"
-             onerror="this.src='https://images.unsplash.com/photo-1651981265769-ab0e2311e781'; this.onerror=null;">
+    <!-- Mobile-only header video (swaps in at <=768px) -->
+    <video class="mobile-header-video" autoplay muted loop playsinline preload="metadata" poster="../assets/guap_collections.jpeg">
+        <source src="../assets/collection_guap.mp4" type="video/mp4">
+        <!-- Fallback will be the background image below on non-supporting browsers -->
+    </video>
+
+    <!-- Desktop header video (shown only on desktop/web) -->
+    <div class="absolute inset-0 header-bg-img" style="opacity:0.30;">
+        <video autoplay muted loop playsinline preload="metadata" poster="../assets/guap_collections.jpeg" class="w-full h-full object-cover">
+            <source src="../assets/guap_header.mp4" type="video/mp4">
+            <!-- Fallback image if video isn't supported -->
+            <img src="https://images.unsplash.com/photo-1651981265769-ab0e2311e781" 
+                 alt="Design studio showcasing streetwear sampling and fabric selection for urban apparel" 
+                 class="w-full h-full object-cover">
+        </video>
     </div>
 
     <!-- Content - Now perfectly centered -->
@@ -586,6 +602,9 @@
     </section>
 
     <!-- Press Recognition removed per request -->
+
+    <!-- Separator -->
+    <div class="h-8 bg-surface"></div>
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-16">
