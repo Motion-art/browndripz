@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product Details - Guaptap</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .product-gallery img { width:100%; height:auto; object-fit:cover; }
+    .variant-select { min-width: 200px; }
+  </style>
+</head>
+<body class="bg-background font-inter">
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <div class="bg-primary/90 p-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">GUAPTAP</div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="product-root">
+        <p>Loading product...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">© 2025 Guaptap</div>
+  </footer>
+
+  <script type="module">
+    try {
+      const { SHOP, API_VERSION, STOREFRONT_TOKEN } = await import('../config/shopify-config.js');
+      const { initShopify, getProductByHandle, createCheckout } = await import('../src/js/shopify-client.js');
+      initShopify({ shop: SHOP, apiVersion: API_VERSION, token: STOREFRONT_TOKEN });
+      const qs = new URLSearchParams(window.location.search);
+      const handle = qs.get('handle');
+      const root = document.getElementById('product-root');
+      console.log('[DEBUG] URL handle param:', handle);
+      if (!handle) {
+        root.innerHTML = '<p class="text-center">No product handle specified.</p>';
+        console.warn('[DEBUG] No product handle specified in URL.');
+      } else {
+        console.log('[DEBUG] Fetching product by handle:', handle);
+        const prod = await getProductByHandle(handle);
+        console.log('[DEBUG] Product fetch result:', prod);
+        if (!prod) {
+          root.innerHTML = '<p class="text-center">Product not found.</p>';
+          console.warn('[DEBUG] Product not found for handle:', handle);
+        } else {
+          renderProduct(prod);
+        }
+      }
+      function renderProduct(p) {
+        console.log('[DEBUG] Rendering product:', p);
+        const images = (p.images && p.images.edges) ? p.images.edges.map(e => e.node) : [];
+        const firstImage = (p.featuredImage && p.featuredImage.url) || (images[0] && images[0].url) || '';
+        const price = p.priceRange && p.priceRange.minVariantPrice ? p.priceRange.minVariantPrice.amount : '';
+        const variants = (p.variants && p.variants.edges) ? p.variants.edges.map(e => e.node) : [];
+        root.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="product-gallery">
+              <img src="${firstImage}" alt="${escapeHtml(p.title)}" class="w-full h-[320px] object-cover rounded shadow-card" />
+            </div>
+            <div>
+              <h1 class="font-playfair text-3xl mb-4">${escapeHtml(p.title)}</h1>
+              <p class="text-lg text-text-secondary mb-6">${escapeHtml(p.description || '')}</p>
+              <div class="mb-4 text-2xl font-semibold">${price ? '$' + price : ''}</div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Variant</label>
+                <select id="variant-select" class="variant-select p-3 border">
+                  ${variants.map(v => `<option value="${v.id}">${escapeHtml(v.title)} ${v.priceV2 ? '- $' + v.priceV2.amount : ''}</option>`).join('')}
+                </select>
+              </div>
+              <div class="flex items-center space-x-3 mb-6">
+                <input id="quantity" type="number" value="1" min="1" class="w-20 p-2 border" />
+                <button id="buy-now" class="btn-accent">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        `;
+        document.getElementById('buy-now').addEventListener('click', async () => {
+          const sel = document.getElementById('variant-select');
+          const qty = parseInt(document.getElementById('quantity').value, 10) || 1;
+          const variantId = sel.value;
+          try {
+            const checkout = await createCheckout([{ variantId, quantity: qty }]);
+            if (checkout && checkout.webUrl) window.location.href = checkout.webUrl;
+            else alert('Failed to create checkout');
+          } catch (err) {
+            console.error(err);
+            alert('Error creating checkout — see console');
+          }
+        });
+      }
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, function (s) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[s];
+        });
+      }
+    } catch (err) {
+      console.warn('Shopify product detail bootstrap failed', err);
+      const root = document.getElementById('product-root');
+      if (root) root.innerHTML = '<p class="text-center">Shopify not configured - add config/shopify-config.js</p>';
+    }
+  </script>
+</body>
+</html>

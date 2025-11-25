@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style Guide - Guaptap Luxury Clothing | Editorial Platform & Style Intelligence</title>
     <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Header video: show mobile video on small viewports, desktop video on larger */
+        .mobile-header-video { display: none; }
+        .header-bg-img { display: block; }
+        @media (max-width: 768px) {
+            .mobile-header-video { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; }
+            .header-bg-img { display: none; }
+        }
+        /* Style guide cards hover effect (lift + image scale) */
+        .style-content {
+            transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms cubic-bezier(.2,.9,.3,1);
+            will-change: transform, box-shadow;
+            transform: translateZ(0);
+        }
+        .style-content:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+        }
+        .style-content img {
+            transition: transform 360ms ease;
+            will-change: transform;
+        }
+        .style-content:hover img {
+            transform: scale(1.03);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .style-content, .style-content img { transition: none !important; transform: none !important; box-shadow: none !important; }
+        }
+    </style>
     <meta name="description" content="Discover style intelligence, seasonal lookbooks, and expert streetwear guides. Your resource for modern Guaptap street style and urban wardrobe essentials.">
     <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fguaptap7699back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
   <script type="module" src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
@@ -27,8 +56,6 @@
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="collection_overview.html" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Collections</a>
                         <a href="style_guide.html" class="text-accent font-inter font-medium">Style Guide</a>
-                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Craftsmanship</a>
-                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">About</a>
                     </nav>
                     
                     <!-- Account and Cart -->
@@ -59,12 +86,22 @@
 
     <!-- Hero Section -->
     <section class="pt-24 pb-16 bg-primary text-white relative overflow-hidden">
-          <div class="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1707280133279-640ac7371787" 
-              alt="Model showcasing Guaptap streetwear and contemporary urban looks" 
-              class="w-full h-full object-cover"
-              onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-       </div>
+    <!-- Mobile-only header video (swaps in at <=768px) -->
+    <video class="mobile-header-video" autoplay muted loop playsinline preload="metadata" poster="../assets/guap_collections.jpeg">
+        <source src="../assets/collection_guap.mp4" type="video/mp4">
+        <!-- Fallback will be the background video below on non-supporting browsers -->
+    </video>
+
+    <!-- Desktop header video (shown only on desktop/web) -->
+    <div class="absolute inset-0 header-bg-img" style="opacity:0.30;">
+        <video autoplay muted loop playsinline preload="metadata" poster="../assets/guap_collections.jpeg" class="w-full h-full object-cover">
+            <source src="../assets/collection_guap.mp4" type="video/mp4">
+            <!-- Fallback image if video isn't supported -->
+            <img src="https://images.unsplash.com/photo-1707280133279-640ac7371787" 
+                 alt="Model showcasing Guaptap streetwear and contemporary urban looks" 
+                 class="w-full h-full object-cover">
+        </video>
+    </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">

@@ -85,8 +85,6 @@
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="pages/collection_overview.html" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Collections</a>
                         <a href="pages/style_guide.html" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Style Guide</a>
-                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">Craftsmanship</a>
-                        <a href="javascript:void(0)" class="text-white hover:text-accent transition-colors duration-300 font-inter font-medium">About</a>
                     </nav>
                     
                     <!-- Account and Cart -->
@@ -115,7 +113,22 @@
         </div>
     </header>
 
-    <!-- Hero Carousel Section -->
+        <!-- Cart Drawer/Modal -->
+        <div id="cart-drawer" class="fixed top-0 right-0 w-96 max-w-full h-full bg-white shadow-2xl z-[999] transition-transform duration-300 translate-x-full flex flex-col" style="display:none;">
+            <div class="flex items-center justify-between p-4 border-b">
+                <h3 class="font-playfair text-xl font-bold">Your Cart</h3>
+                <button id="close-cart-btn" class="text-gray-500 hover:text-accent text-2xl">&times;</button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4"></div>
+            <div class="p-4 border-t">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-inter font-semibold">Total:</span>
+                    <span id="cart-total" class="font-inter font-bold text-lg">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-accent text-white py-3 rounded font-inter font-semibold hover:bg-accent/80 transition">Checkout</button>
+            </div>
+        </div>
+        <!-- Hero Carousel Section -->
     <section id="hero-carousel" class="relative h-screen overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-primary/60 z-10"></div>
         
@@ -173,8 +186,8 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Collection 1 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                <div class="group" style="pointer-events: none;">
+                    <div class="relative overflow-hidden bg-white shadow-card transition-all duration-400 transition-premium" style="cursor: default;">
                         <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891" 
                              alt="Executive essentials collection featuring premium business attire and formal wear" 
                              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
@@ -188,8 +201,8 @@
                 </div>
                 
                 <!-- Collection 2 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                <div class="group" style="pointer-events: none;">
+                    <div class="relative overflow-hidden bg-white shadow-card transition-all duration-400 transition-premium" style="cursor: default;">
                         <img src="https://images.unsplash.com/photo-1695300467075-a7230b0cab13" 
                              alt="Weekend luxury collection showcasing premium casual wear and sophisticated leisure clothing" 
                              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
@@ -203,8 +216,8 @@
                 </div>
                 
                 <!-- Collection 3 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
+                <div class="group" style="pointer-events: none;">
+                    <div class="relative overflow-hidden bg-white shadow-card transition-all duration-400 transition-premium" style="cursor: default;">
                         <img src="https://images.unsplash.com/photo-1664682333328-713054fca344" 
                              alt="Heritage craftsmanship collection displaying traditional tailoring and artisanal streetwear" 
                              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
@@ -251,6 +264,7 @@
     </section>
 
     <!-- Featured Products -->
+    <!-- Featured Products -->
     <section class="py-20 bg-background">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -261,237 +275,170 @@
                     Handpicked selections that define contemporary Guaptap street style
                 </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Product 1 -->
-                <div class="group cursor-pointer">
-                    <div class="bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium overflow-hidden">
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1591944489410-16ec1074a18e" 
-                                 alt="Premium charcoal wool suit jacket with contemporary tailoring and luxury finishing" 
-                                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
-                                 onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <button class="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-playfair font-semibold text-xl text-primary mb-2">Executive Blazer</h3>
-                            <p class="font-inter text-text-secondary text-sm mb-4">Premium wool blend with contemporary cut</p>
-                            <div class="flex items-center justify-between">
-                                <span class="font-inter font-semibold text-lg text-primary">$1,299</span>
-                                <a href="pages/product_detail.html" class="text-accent hover:text-accent/80 font-inter font-medium text-sm">
-                                    View Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 2 -->
-                <div class="group cursor-pointer">
-                    <div class="bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium overflow-hidden">
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg" 
-                                 alt="Luxury denim jeans with premium indigo wash and artisanal detailing" 
-                                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
-                                 onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
-                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <button class="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-playfair font-semibold text-xl text-primary mb-2">Heritage Denim</h3>
-                            <p class="font-inter text-text-secondary text-sm mb-4">Japanese selvedge with refined finishing</p>
-                            <div class="flex items-center justify-between">
-                                <span class="font-inter font-semibold text-lg text-primary">$399</span>
-                                <a href="pages/product_detail.html" class="text-accent hover:text-accent/80 font-inter font-medium text-sm">
-                                    View Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="group cursor-pointer">
-                    <div class="bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium overflow-hidden">
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1650741562741-19e5b5f7ed09" 
-                                 alt="Handcrafted leather dress shoes with premium Italian leather and traditional construction" 
-                                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
-                                 onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <button class="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-playfair font-semibold text-xl text-primary mb-2">Oxford Leather</h3>
-                            <p class="font-inter text-text-secondary text-sm mb-4">Italian craftsmanship meets modern comfort</p>
-                            <div class="flex items-center justify-between">
-                                <span class="font-inter font-semibold text-lg text-primary">$899</span>
-                                <a href="pages/product_detail.html" class="text-accent hover:text-accent/80 font-inter font-medium text-sm">
-                                    View Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="group cursor-pointer">
-                    <div class="bg-white shadow-card hover:shadow-premium transition-all duration-400 transition-premium overflow-hidden">
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1633943927975-391a217c7c44" 
-                                 alt="Luxury cashmere sweater with fine knit construction and sophisticated styling" 
-                                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-400"
-                                 onerror="this.src='https://images.pixabay.com/photo/2016/11/29/09/00/denim-1868364_1280.jpg'; this.onerror=null;">
-                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <button class="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-playfair font-semibold text-xl text-primary mb-2">Cashmere Knit</h3>
-                            <p class="font-inter text-text-secondary text-sm mb-4">Pure luxury with timeless appeal</p>
-                            <div class="flex items-center justify-between">
-                                <span class="font-inter font-semibold text-lg text-primary">$699</span>
-                                <a href="pages/product_detail.html" class="text-accent hover:text-accent/80 font-inter font-medium text-sm">
-                                    View Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="featured-products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products will be injected here -->
             </div>
         </div>
     </section>
 
-    <!-- Client Testimonials -->
-    <section class="py-20 bg-surface">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-playfair font-semibold text-4xl md:text-5xl text-primary mb-4">
-                    What Our Clients Say
-                </h2>
-                <p class="font-inter text-text-secondary text-lg">
-                    Trusted by discerning gentlemen worldwide
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-8 shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
-                    <div class="mb-6">
-                        <svg class="w-8 h-8 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                        </svg>
-                        <p class="font-inter text-text-primary leading-relaxed mb-6">
-                            "The attention to detail and quality of craftsmanship is unparalleled. Every piece I've purchased has exceeded my expectations and elevated my professional wardrobe."
-                        </p>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1684607633138-6cc13613369b" 
-                             alt="Professional headshot of satisfied client Michael Chen, executive testimonial" 
-                             class="w-12 h-12 rounded-full object-cover mr-4"
-                             onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-                        <div>
-                            <h4 class="font-inter font-semibold text-primary">Michael Chen</h4>
-                            <p class="font-inter text-text-secondary text-sm">CEO, Tech Innovations</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-8 shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
-                    <div class="mb-6">
-                        <svg class="w-8 h-8 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                        </svg>
-                        <p class="font-inter text-text-primary leading-relaxed mb-6">
-                            "Finally found a brand that understands the modern gentleman. The fit is perfect, the materials are exceptional, and the service is impeccable."
-                        </p>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1676245437710-235b3ad836a4" 
-                             alt="Professional headshot of satisfied client David Rodriguez, business owner testimonial" 
-                             class="w-12 h-12 rounded-full object-cover mr-4"
-                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
-                        <div>
-                            <h4 class="font-inter font-semibold text-primary">David Rodriguez</h4>
-                            <p class="font-inter text-text-secondary text-sm">Investment Banker</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-8 shadow-card hover:shadow-premium transition-all duration-400 transition-premium">
-                    <div class="mb-6">
-                        <svg class="w-8 h-8 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                        </svg>
-                        <p class="font-inter text-text-primary leading-relaxed mb-6">
-                            "The personal styling service transformed my wardrobe. Every piece works together seamlessly, and I feel confident in every situation."
-                        </p>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1676245437710-235b3ad836a4" 
-                             alt="Professional headshot of satisfied client James Thompson, entrepreneur testimonial" 
-                             class="w-12 h-12 rounded-full object-cover mr-4"
-                             onerror="this.src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;">
-                        <div>
-                            <h4 class="font-inter font-semibold text-primary">James Thompson</h4>
-                            <p class="font-inter text-text-secondary text-sm">Entrepreneur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script type="module">
+    import { SHOP, API_VERSION, STOREFRONT_TOKEN } from './config/shopify-config.js';
+    import { initShopify, getProducts, renderProductCard, cartAPI, addToRemoteCart, getCheckoutUrlForStoredCart } from './src/js/shopify-client.js';
 
-    <!-- Press Recognition -->
-    <section class="py-16 bg-primary">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-playfair font-semibold text-3xl text-white mb-4">
-                    Press Recognition
-                </h2>
-                <p class="font-inter text-white/80">
-                    Featured in leading publications
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <div class="text-center">
-                    <div class="text-white/60 font-playfair font-bold text-2xl">GQ</div>
-                    <p class="text-white/40 font-inter text-sm mt-2">"Best Streetwear Brand 2024"</p>
+        // Initialize Shopify client
+        initShopify({ shop: SHOP, apiVersion: API_VERSION, token: STOREFRONT_TOKEN });
+
+        // Cart UI logic
+        function openCart() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer) {
+                drawer.style.display = 'flex';
+                setTimeout(() => drawer.style.transform = 'translateX(0)', 10);
+                renderCart();
+            }
+        }
+        function closeCart() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer) {
+                drawer.style.transform = 'translateX(100%)';
+                setTimeout(() => drawer.style.display = 'none', 300);
+            }
+        }
+        function renderCart() {
+            const cart = cartAPI.getCart();
+            const itemsDiv = document.getElementById('cart-items');
+            const totalDiv = document.getElementById('cart-total');
+            if (!itemsDiv || !totalDiv) return;
+            if (!cart.items.length) {
+                itemsDiv.innerHTML = '<div class="text-center py-8 text-gray-500">Your cart is empty.</div>';
+                totalDiv.textContent = '$0.00';
+                return;
+            }
+            itemsDiv.innerHTML = cart.items.map(item => `
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <div class="font-inter font-semibold">${item.title}</div>
+                        <div class="text-sm text-gray-500">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="update-qty-btn px-2 py-1 bg-gray-200 rounded" data-variant="${item.variantId}" data-action="dec">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="update-qty-btn px-2 py-1 bg-gray-200 rounded" data-variant="${item.variantId}" data-action="inc">+</button>
+                        <button class="remove-item-btn text-red-500 ml-2" data-variant="${item.variantId}">&times;</button>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="text-white/60 font-playfair font-bold text-2xl">ESQUIRE</div>
-                    <p class="text-white/40 font-inter text-sm mt-2">"Editor's Choice"</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-white/60 font-playfair font-bold text-2xl">FORBES</div>
-                    <p class="text-white/40 font-inter text-sm mt-2">"Luxury Innovation"</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-white/60 font-playfair font-bold text-2xl">WSJ</div>
-                    <p class="text-white/40 font-inter text-sm mt-2">"Style Authority"</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            `).join('');
+            totalDiv.textContent = `$${cartAPI.getTotal().toFixed(2)}`;
+        }
+
+    // Event listeners for cart UI
+    document.addEventListener('click', async e => {
+            // Open cart if cart icon clicked
+            if (e.target.closest('.cart-icon-btn')) {
+                openCart();
+            }
+            // Close cart
+            if (e.target.id === 'close-cart-btn') {
+                closeCart();
+            }
+            // Remove item
+            if (e.target.classList.contains('remove-item-btn')) {
+                const vid = e.target.dataset.variant;
+                cartAPI.removeItem(vid);
+                renderCart();
+            }
+            // Update quantity
+            if (e.target.classList.contains('update-qty-btn')) {
+                const vid = e.target.dataset.variant;
+                const action = e.target.dataset.action;
+                const cart = cartAPI.getCart();
+                const item = cart.items.find(i => i.variantId === vid);
+                if (item) {
+                    let qty = item.quantity;
+                    qty = action === 'inc' ? qty + 1 : qty - 1;
+                    cartAPI.updateQuantity(vid, qty);
+                    renderCart();
+                }
+            }
+            // Checkout
+            if (e.target.id === 'checkout-btn') {
+                try {
+                    const checkoutUrl = await getCheckoutUrlForStoredCart();
+                    if (checkoutUrl) {
+                        window.location.href = checkoutUrl;
+                        return;
+                    }
+                    // fallback: if no remote cart, but local items exist, create remote cart from local and redirect
+                    const local = cartAPI.getCart();
+                    if (local.items.length) {
+                        // only send the first line as a simple fallback (can be extended)
+                        const first = local.items[0];
+                        const cart = await addToRemoteCart(first.variantId, first.quantity);
+                        if (cart && cart.checkoutUrl) {
+                            window.location.href = cart.checkoutUrl;
+                            return;
+                        }
+                    }
+                    alert('No checkout available. Please add items to cart first.');
+                } catch (err) {
+                    console.error('Checkout error (remote):', err);
+                    alert('Checkout error. Please try again.');
+                }
+            }
+        });
+
+        // Fetch and render featured products
+        async function loadFeaturedProducts() {
+            const grid = document.getElementById('featured-products-grid');
+            if (!grid) return;
+            grid.innerHTML = '<div class="col-span-4 text-center py-8">Loading featured products...</div>';
+            try {
+                const products = await getProducts(4);
+                grid.innerHTML = '';
+                products.forEach(product => {
+                    const card = renderProductCard(product);
+                    // Add to Cart button logic (uses remote Cart API)
+                    const btn = card.querySelector('.add-to-cart-btn');
+                    if (btn) {
+                        btn.addEventListener('click', async (e) => {
+                            e.stopPropagation();
+                            const variantId = card.dataset.variantId;
+                            const title = card.querySelector('h3')?.textContent || '';
+                            const price = card.querySelector('span.font-inter.text-sm')?.textContent.replace('$','') || '';
+                            if (!variantId) {
+                                alert('No variant available for this product.');
+                                console.error('Add to Cart failed: No variantId', { product });
+                                return;
+                            }
+                            try {
+                                const remoteCart = await addToRemoteCart(variantId, 1);
+                                // update local cart UI state
+                                cartAPI.addItem(variantId, title, price, 1);
+                                openCart();
+                                renderCart();
+                                console.log('Added to remote cart:', { variantId, title, price, remoteCart });
+                            } catch (err) {
+                                alert('Error adding to cart. See console for details.');
+                                console.error('Add to Cart error (remote):', err, { variantId, title, price });
+                            }
+                        });
+                    }
+                    // Make card clickable to product details
+                    card.addEventListener('click', () => {
+                        window.location.href = `pages/product_details.html?handle=${encodeURIComponent(product.handle)}`;
+                    });
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                grid.innerHTML = '<div class="col-span-4 text-center py-8 text-red-600">Failed to load featured products.</div>';
+                console.error('Featured products fetch error:', err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadFeaturedProducts);
+    </script>
+
+
 
     <!-- Newsletter Signup -->
     <section class="py-20 bg-background">
