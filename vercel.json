@@ -1,0 +1,9 @@
+{
+  "buildCommand": "echo 'No build step needed for static site'",
+  "outputDirectory": ".",
+  "env": {
+    "SHOPIFY_SHOP": "@shopify_shop",
+    "SHOPIFY_API_VERSION": "@shopify_api_version",
+    "SHOPIFY_STOREFRONT_TOKEN": "@shopify_storefront_token"
+  }
+}

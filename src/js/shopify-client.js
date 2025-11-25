@@ -46,12 +46,12 @@ export function initShopify({ shop, apiVersion = '2025-07', token }) {
 async function shopifyGraphQL(query, variables = {}) {
   if (!SHOP || !STOREFRONT_TOKEN) throw new Error('Shopify config not initialized');
 
-  const url = `https://${SHOP}/api/${API_VERSION}/graphql.json`;
+  // Use local proxy endpoint (works on localhost, Vercel, or any server with /api/graphql)
+  const url = '/api/graphql';
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ query, variables })
   });
